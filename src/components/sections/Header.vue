@@ -20,7 +20,9 @@
               <router-link class="nav-link active" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/users">Users</router-link>
+              <router-link class="nav-link" to="/users"
+                >Register Users</router-link
+              >
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/getUser"
@@ -37,7 +39,7 @@
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Header',
+  name: 'header',
 };
 </script>
 

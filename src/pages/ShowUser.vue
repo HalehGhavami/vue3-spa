@@ -1,13 +1,9 @@
 <template>
-  <div class="container mt-5">
-    <div class="row g-3">
-      <div v-if="loading" class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-      <div v-else class="col-md-3">
-        <UsersCard :user="user" />
-      </div>
-    </div>
+  <div v-if="loading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <div v-else class="col-md-3">
+    <UsersCard :user="user" />
   </div>
 </template>
 
@@ -19,7 +15,7 @@ import { useRoute } from 'vue-router';
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'GetUsers',
+  name: 'userId',
   components: { UsersCard },
 
   setup() {

@@ -8,7 +8,7 @@
 <script>
 import Header from './components/sections/Header.vue';
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     Header,
   },

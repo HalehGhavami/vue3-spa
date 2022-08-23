@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!route.params.id" class="container mt-5">
+  <div class="container mt-5">
     <div class="row g-3">
       <div v-if="loading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -9,26 +9,21 @@
       </div>
     </div>
   </div>
-  <router-view v-else></router-view>
 </template>
 
 <script>
 import axios from 'axios';
 import { ref } from 'vue';
 import UsersCard from '@/components/UsersCard.vue';
-import { useRoute } from 'vue-router';
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'GetUsers',
+  name: 'getUser',
   components: { UsersCard },
 
   setup() {
     const users = ref([]);
     const loading = ref(true);
-    const route = useRoute();
-
-    console.log(route.params.id);
 
     function getUsers() {
       axios
@@ -47,7 +42,7 @@ export default {
         });
     }
     getUsers();
-    return { users, loading, route };
+    return { users, loading };
   },
 };
 </script>
