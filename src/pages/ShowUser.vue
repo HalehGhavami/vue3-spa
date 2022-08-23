@@ -1,15 +1,14 @@
 <template>
-  <div v-if="!route.params.id" class="container mt-5">
+  <div class="container mt-5">
     <div class="row g-3">
       <div v-if="loading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <div v-else class="col-md-3" v-for="user in users" :key="user.id">
+      <div v-else class="col-md-3">
         <UsersCard :user="user" />
       </div>
     </div>
   </div>
-  <router-view v-else></router-view>
 </template>
 
 <script>
@@ -24,18 +23,16 @@ export default {
   components: { UsersCard },
 
   setup() {
-    const users = ref([]);
+    const user = ref({});
     const loading = ref(true);
     const route = useRoute();
 
-    console.log(route.params.id);
-
-    function getUsers() {
+    function getUser() {
       axios
-        .get('https://jsonplaceholder.typicode.com/users')
+        .get(`https://jsonplaceholder.typicode.com/users/${route.params.id}`)
         .then(function (response) {
           // handle success
-          users.value = response.data;
+          user.value = response.data;
           loading.value = false;
         })
         .catch(function (error) {
@@ -46,8 +43,8 @@ export default {
           // always executed
         });
     }
-    getUsers();
-    return { users, loading, route };
+    getUser();
+    return { user, loading, route };
   },
 };
 </script>

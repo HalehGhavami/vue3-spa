@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from './pages/Home.vue';
 import Users from './pages/Users.vue';
 import GetUsers from './pages/GetUsers.vue';
-
+import ShowUser from './pages/ShowUser.vue';
 const routes = [
   {
     path: '/',
@@ -19,6 +19,10 @@ const routes = [
     path: '/getUser',
     name: 'getUser',
     component: GetUsers,
+    children: [
+      // eslint-disable-next-line no-undef
+      { path: ':id', name: 'userId', component: ShowUser },
+    ],
   },
 ];
 
